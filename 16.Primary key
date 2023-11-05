@@ -1,0 +1,30 @@
+CREATE TABLE TableWithPrimaryKey (
+    id INT NOT NULL,
+    name VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+-- Creating a table with a unique key constraint
+CREATE TABLE TableWithUniqueKey (
+    id INT NOT NULL,
+    email VARCHAR(255),
+    UNIQUE (email)
+);
+
+-- Creating a table with a not null key constraint
+CREATE TABLE TableWithNotNull (
+    id INT NOT NULL,
+    address VARCHAR(255) NOT NULL
+);
+
+-- Creating two tables to demonstrate a foreign key constraint
+CREATE TABLE ParentTable (
+    id INT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE ChildTable (
+    id INT,
+    parent_id INT,
+    FOREIGN KEY (parent_id) REFERENCES ParentTable(id)
+);
