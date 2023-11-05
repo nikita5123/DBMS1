@@ -1,0 +1,24 @@
+CREATE DATABASE Company;
+
+USE Company;
+
+CREATE TABLE Employee (
+    EmployeeID INT AUTO_INCREMENT,
+    EmployeeName VARCHAR(255),
+    Department VARCHAR(255),
+    Salary INT,
+    PRIMARY KEY (EmployeeID)
+);
+
+INSERT INTO Employee (EmployeeName, Department, Salary) VALUES
+('John Doe', 'Sales', 60000),
+('Jane Smith', 'Sales', 55000),
+('Michael Johnson', 'Marketing', 45000),
+('Emily Williams', 'Sales', 65000),
+('Chris Lee', 'HR', 50000);
+
+SELECT EmployeeID, EmployeeName, Department, Salary
+FROM Employee
+WHERE Department = 'Sales'
+HAVING Salary > 50000
+ORDER BY Salary DESC;
