@@ -1,0 +1,23 @@
+-- First, create the 'areas' table
+CREATE TABLE areas (
+  radius NUMBER,
+  area NUMBER
+);
+
+-- Next, create the PL/SQL block to calculate and store the areas for radii from 5 to 9
+DECLARE
+  v_radius NUMBER;
+  v_area NUMBER;
+BEGIN
+  FOR i IN 5..9 LOOP
+    v_radius := i;
+    v_area := 3.14159 * v_radius * v_radius; -- Formula for calculating the area of a circle
+    INSERT INTO areas (radius, area) VALUES (v_radius, v_area);
+  END LOOP;
+  COMMIT;
+  DBMS_OUTPUT.PUT_LINE('Calculation and insertion completed successfully.');
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLERRM);
+END;
+/
