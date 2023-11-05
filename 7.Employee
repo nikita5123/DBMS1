@@ -1,0 +1,28 @@
+-- Create a table Employee
+CREATE TABLE Employee (
+    Empno INT PRIMARY KEY,
+    Ename VARCHAR(255) NOT NULL,
+    Job VARCHAR(255) NOT NULL,
+    Salary DECIMAL(10, 2) NOT NULL
+);
+
+-- Insert sample data into the Employee table
+INSERT INTO Employee (Empno, Ename, Job, Salary) VALUES (1, 'John Doe', 'Manager', 5000.00);
+INSERT INTO Employee (Empno, Ename, Job, Salary) VALUES (2, 'Jane Smith', 'Analyst', 4000.00);
+INSERT INTO Employee (Empno, Ename, Job, Salary) VALUES (3, 'Michael Johnson', 'Clerk', 3000.00);
+INSERT INTO Employee (Empno, Ename, Job, Salary) VALUES (4, 'Emily Williams', 'Manager', 5500.00);
+INSERT INTO Employee (Empno, Ename, Job, Salary) VALUES (5, 'Daniel Brown', 'Analyst', 4200.00);
+
+-- SQL Queries using aggregation functions
+
+-- Calculate the average salary
+SELECT AVG(Salary) AS AverageSalary FROM Employee;
+
+-- Count the number of employees
+SELECT COUNT(*) AS NumEmployees FROM Employee;
+
+-- Find the minimum salary
+SELECT MIN(Salary) AS MinSalary FROM Employee;
+
+-- Find the maximum salary
+SELECT MAX(Salary) AS MaxSalary FROM Employee;
