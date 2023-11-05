@@ -1,0 +1,591 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/): mongodb:
+mongodb:
+Current Mongosh Log ID: 6516bdd681e4293a3d50ee0a
+Connecting to: 
+mongodb://127.0.0.1:27017/mongodb?directConnection=true&serverSelectionTimeoutMS=20
+00&appName=mongosh+1.10.6
+Using MongoDB: 7.0.1
+Using Mongosh: 1.10.6
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+------
+ The server generated these startup warnings when booting
+ 2023-09-26T18:58:41.621+05:30: Access control is not enabled for the database. 
+Read and write access to data and configuration is unrestricted
+------
+mongodb> use Sneha;
+
+Sneha> db.createCollection('Student');
+{ ok: 1 }
+Sneha> db.Student.insertOne({'Rno':'1','Name':'Piyush','Class':'TE COMP'});{
+ acknowledged: true,
+ insertedId: ObjectId("6516be3d81e4293a3d50ee0b")
+}
+Sneha> db.Student.insertOne({'Rno':'2','Name':'Shraddha','Class':'TE COMP'});
+{
+ acknowledged: true,
+ insertedId: ObjectId("6516be7a81e4293a3d50ee0c")
+}
+Sneha> db.Student.insertOne({'Rno':'3','Name':'Anushri','Class':'TE COMP'});
+{
+ acknowledged: true,
+ insertedId: ObjectId("6516bea281e4293a3d50ee0d")
+}
+Sneha> db.Student.insertOne({'Rno':'4','Name':'Nikita','Class':'TE COMP'});
+{
+ acknowledged: true,
+ insertedId: ObjectId("6516beda81e4293a3d50ee0e")
+}
+Sneha> db.Student.insertOne({'Rno':'5','Name':'Sneha','Class':'TE COMP'});
+{
+ acknowledged: true,
+ insertedId: ObjectId("6516bf1d81e4293a3d50ee0f")
+}
+Sneha> db.Student.insertOne({'Rno':'6','Name':'Mayuri','Class':'TE COMP'});
+{
+ acknowledged: true,
+ insertedId: ObjectId("6516bf3b81e4293a3d50ee10")
+}
+Sneha> db.Student.find();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Sneha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.update({'Name':'Sneha'},{$set: {'Name':'Snehal'}});
+{
+ acknowledged: true,
+ insertedId: null,
+ matchedCount: 1,
+ modifiedCount: 1,
+ upsertedCount: 0
+}
+Sneha> db.Student.find().pretty();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Snehal',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.remove({'ADD':'MP'});
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, 
+findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 0 }
+Sneha> db.Student.find().pretty();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Snehal',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.save({ _id: ObjectId("6516bf3b81e4293a3d50ee10"), "Rno": 
+"6","Name":"Mayuri","Clas
+s":"TE COMP","ADD":"MP"});
+TypeError: db.Student.save is not a function
+Sneha> db.Student.find().pretty();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'SnehaL',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find({$and:[{"Name":"Piyush"},{"Rno":"1"}]});
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find({$and:[{"Name":"Piyush"},{"Rno":"1"}]}).pretty();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find({$and:[{"Name":"Piyush"},{"Rno":"2"}]}).pretty();
+Sneha> db.Student.find({$or:[{"Name":"Piyush"},{"Rno":"2"}]}).pretty();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find({$or:[{"Name":"Piyush"},{"Class":"TE COMP"}]}).pretty();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Snehal',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find({$nor:[{"Name":"Piyush"},{"Class":"TE COMP"}]}).pretty();
+Sneha> db.Student.find({$nor:[{"Name":"Piyush"},{"Rno":"2"}]}).pretty();
+[
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Sneha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find({$nor:[{"Name":"Piyush"},{"Rno":"1"}]}).pretty();
+[
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Sneha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $not:{$lt:"3"}}}).pretty();
+[
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Sneha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $eq:"5"}}).pretty();
+[
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Sneha',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $ne:"5"}}).pretty();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $gt:"5"}}).pretty();
+[
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $gte:"5"}}).pretty();
+[
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Sneha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf3b81e4293a3d50ee10"),
+ Rno: '6',
+ Name: 'Mayuri',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $lt:"5"}}).pretty();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $lte:"5"}}).pretty();
+[
+ {
+ _id: ObjectId("6516be3d81e4293a3d50ee0b"),
+ Rno: '1',
+ Name: 'Piyush',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Sneha',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $lt:"5",$gt:"2"}}).pretty();
+[
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $lte:"5",$gte:"2"}}).pretty();
+[
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Sneha',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $lte:"5",$gt:"2"}}).pretty();
+[
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bf1d81e4293a3d50ee0f"),
+ Rno: '5',
+ Name: 'Sneha',
+ Class: 'TE COMP'
+ }
+]
+Sneha> db.Student.find( {"Rno": { $lt:"5",$gte:"2"}}).pretty();
+[
+ {
+ _id: ObjectId("6516be7a81e4293a3d50ee0c"),
+ Rno: '2',
+ Name: 'Shraddha',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516bea281e4293a3d50ee0d"),
+ Rno: '3',
+ Name: 'Anushri',
+ Class: 'TE COMP'
+ },
+ {
+ _id: ObjectId("6516beda81e4293a3d50ee0e"),
+ Rno: '4',
+ Name: 'Nikita',
+ Class: 'TE COMP'
+ }
+]
+Sneha>
