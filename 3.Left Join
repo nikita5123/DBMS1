@@ -1,0 +1,45 @@
+CREATE DATABASE ExampleDB;
+
+USE ExampleDB;
+
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    ShipperID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+CREATE TABLE Shippers (
+    ShipperID INT PRIMARY KEY,
+    ShipperName VARCHAR(255) NOT NULL
+);
+INSERT INTO Customers (CustomerID, CustomerName) VALUES (1, 'Customer A');
+INSERT INTO Customers (CustomerID, CustomerName) VALUES (2, 'Customer B');
+
+INSERT INTO Orders (OrderID, CustomerID, ShipperID) VALUES (1, 1, 1);
+INSERT INTO Orders (OrderID, CustomerID, ShipperID) VALUES (2, 2, 2);
+
+INSERT INTO Shippers (ShipperID, ShipperName) VALUES (1, 'Shipper X');
+INSERT INTO Shippers (ShipperID, ShipperName) VALUES (2, 'Shipper Y');
+
+-- 1. Basic Left Join
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+-- 2. Left Join with Where Clause
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+WHERE Customers.CustomerID IS NULL;
+
+-- 3. Left Join with multiple tables
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
