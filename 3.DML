@@ -31,3 +31,119 @@ select * from stud_tab where stud_fees=(select max(stud_fees) from stud_tab);
 select sum(stud_fees) from stud_tab;
 create table stud_info as select stud_id,stud_name from stud_tab;
 select stud_id from stud_tab union select stud_id from stud_info;
+
+
+mysql> show databases;
+
+mysql> use Abhi;
+
+mysql> show tables;
+
+mysql> create table _master(product_no int,description varchar(20),profit_per
+float,unit_measure varchar(10),quantity int,reorder int,sell_price
+float,cost_price float,primary key(product_no));
+
+mysql> create table customer(cust_no int,cust_name varchar(20),cust_add
+varchar(20),phone_no int,primary key(cust_no));
+
+mysql> create table capital(cap_no int,cap_name varchar(20),state_no
+int,primary key(cap_no));
+
+mysql> create table state(state_no int,state_name varchar(20),state_code
+int,capital varchar(20),primary key(state_no));
+
+mysql> insert into capital values('01','MH','01');
+
+mysql> insert into capital values('02','RAJ','02');
+
+mysql> insert into capital values('03','GOA','03');
+
+mysql> insert into capital values('04','GUJ','04');
+
+mysql> insert into capital values('05','KAR','05');
+
+mysql> insert into state values('01','MH','01','MUM');
+
+mysql> insert into state values('02','RAJ','02','JAI');
+
+mysql> insert into state values('03','GOA','03','PAN');
+
+mysql> insert into state values('04','GUJ','04','SUR');
+
+mysql> insert into state values('05','KAR','05','BAN');
+
+mysql> select * from capital;
+
+mysql> select * from state;
+
+mysql> select capital.cap_no, state.state_no from capital inner join state on
+capital.cap_no=state.state_no;
+
+mysql> UPDATE state SET state_no="78" where state_no='1';
+
+mysql> UPDATE state SET state_no="58" where state_no='2';
+
+mysql> UPDATE state SET state_no="46" where state_no='3';
+
+mysql> UPDATE state SET state_no="489" where state_no='4';
+
+mysql> UPDATE state SET state_no="458" where state_no='5';
+
+mysql> insert into state values('05','MP','05','BHO');
+
+mysql> select capital.cap_no, state.state_no from capital inner join state on
+capital.cap_no=state.state_no;
+
+mysql> select capital.cap_no, state.state_no from capital left join state on
+capital.cap_no=state.state_no;
+
+mysql> select capital.cap_no, state.state_no from capital left join state on
+capital.cap_no=state.state_name;
+
+mysql> select capital.cap_no, state.state_no from capital right join state on
+capital.cap_no=state.state_no;
+
+mysql> select * from capital;
+
+mysql> select * from state;
+
+mysql> select * from capital;
+
+mysql> select capital.cap_no, state.state_no from capital inner join state on
+capital.cap_no=state.state_no;
+
+mysql> select capital.cap_no,capital.cap_name,state.capital,state.state_no from
+capital inner join state on capital.cap_no=state.state_no;
+
+mysql> select capital.cap_no,capital.cap_name,state.capital,state.state_no
+from capital left join state on capital.cap_no=state.state_no;
+
+mysql> select capital.cap_no,capital.cap_name,state.capital,state.state_no
+from capital right join state on capital.cap_no=state.state_no;
+
+mysql> select capital.cap_no,capital.cap_name,state.capital,state.state_no from
+capital left join state on capital.cap_no=state.state_no union
+selectcapital.cap_no,capital.cap_name,state.capital,state.state_no from capital
+right join state on capital.cap_no=state.state_no;
+
+mysql> select * from capital c1, state s1 where c1.cap_no=s1.state_no;
+
+mysql> select * from capital c1, state s1 where c1.cap_no! =s1.state_no;
+
+mysql> select * from state where state_no=(select state_no from state where
+state_name='MH');
+
+mysql> select * from state where state_no=(select state_no from state where
+state_name='GUJ');
+
+mysql> select * from state where state_no=(select capital.state_no from capital
+where cap_name='MH');
+
+mysql> select * from state where state_no=(select capital.state_no from capital
+where cap_name='GUJ');
+
+mysql> select * from state where state_no=(select capital.state_no from capital
+where cap_name='RAJ');
+
+mysql> select * from state where state_no=(select capital.state_no from capital
+where cap_name='KAR');
