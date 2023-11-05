@@ -1,0 +1,27 @@
+-- Creating a sample Employee table
+CREATE TABLE Employee (
+    EmpID INT PRIMARY KEY,
+    EmpName VARCHAR(255),
+    EmpSalary FLOAT
+);
+
+-- Inserting some sample data into the Employee table
+INSERT INTO Employee (EmpID, EmpName, EmpSalary) VALUES (1, 'John Doe', 50000);
+INSERT INTO Employee (EmpID, EmpName, EmpSalary) VALUES (2, 'Jane Doe', 60000);
+
+-- Creating a view on the Employee table
+CREATE VIEW EmployeeView AS
+SELECT EmpID, EmpName, EmpSalary
+FROM Employee;
+
+-- Performing select operation using the view
+SELECT * FROM EmployeeView;
+
+-- Performing insert operation using the view
+INSERT INTO EmployeeView (EmpID, EmpName, EmpSalary) VALUES (3, 'Bob Smith', 55000);
+
+-- Performing update operation using the view
+UPDATE EmployeeView SET EmpSalary = 65000 WHERE EmpID = 1;
+
+-- Performing delete operation using the view
+DELETE FROM EmployeeView WHERE EmpID = 2;
