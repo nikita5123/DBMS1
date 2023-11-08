@@ -1,0 +1,46 @@
+What is two pass assembler?
+2. What is the significance of symbol table?
+3. Explain the assembler directives EQU, ORIGIN.
+4. Explain the assembler directives START, END, LTORG.
+5. What is the use of POOLTAB and LITTAB?
+6. How literals are handled in pass I?
+7. What are the tasks done in Pass I?
+8. How error handling is done in pass I?
+9. Which variant is used in implementation? Why?
+10. Which intermediate data structures are designed and implemented in PassI?
+11. What is the format of a machine code generated in PassII?
+12. What is forward reference? How it is resolved by assembler?
+13. How error handling is done in pass II?
+14. What is the difference between IS, DL and AD?
+15. What are the tasks done in Pass II?
+
+
+Define macro?
+2. Define purpose of pass-1 of two pass macro processor
+3. List out types of macro arguments
+4. What is the use of MDT-index field in MNT?
+5. What we store in ALA?
+
+What are the types of CPU scheduler?
+ii) What is the difference between long and short term scheduling?
+iii) Logic of program?
+iv) What is preemptive and non-preemptive scheduling?
+v) What are types of scheduling algorithms?
+vi) Why Priority scheduling may cause low-priority processes to starve?
+vii) What are the goals of scheduling?
+viii) Define the difference between preemptive and non-preemptive scheduling.
+ix) Which scheduling algorithm is best? Why?
+
+Which algorithm is best and why?
+2. Need of allocating blocks to jobs?
+3. What is the time taken by each algorithm for execution?
+
+What is virtual memory?
+2. Explain working of LRU page replacement algorithm
+3. Explain working of OPTIMAL page replacement algorithm
+4. Which Page replacement algorithm is best?
+5. Explain what is Belody’s Anomaly?
+6. Explain the scenario in which page replacement algorithm is used?
+7. Explain what is page fault?
+8. Explain what is paging scheme? 
+9. Explain what is counting based page replacement algorithms?
